@@ -17,20 +17,21 @@ public class WaitUtils {
     }
 
     // Reusable method for waiting for an element to be clickable
-    public WebElement waitForElementToBeClickable(By locator, int timeoutInSeconds) {
+    public WebElement waitForElementToBeClickable(WebElement webElement, int timeoutInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
-        return wait.until(ExpectedConditions.elementToBeClickable(locator));
+        return wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
     // Reusable method for waiting for an element to be visible
-    public WebElement waitForElementToBeVisible(By locator, int timeoutInSeconds) {
+    public WebElement waitForElementToBeVisible(WebElement webElement, int timeoutInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        return wait.until(ExpectedConditions.visibilityOf(webElement));
     }
 
     // Reusable method for waiting for an element to be present in the DOM
-    public WebElement waitForElementToBePresent(By locator, int timeoutInSeconds) {
+    public WebElement waitForElementToBePresent(WebElement webElement, int timeoutInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
-        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        return wait.until(ExpectedConditions.visibilityOf(webElement));
     }
+
 }

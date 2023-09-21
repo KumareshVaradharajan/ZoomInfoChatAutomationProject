@@ -14,6 +14,9 @@ public class ChatPage {
         PageFactory.initElements(driver, this);
     }
 
+    @FindBy(id = "hs-eu-confirmation-button")
+    private WebElement cookieAcceptButton;
+
     @FindBy(xpath = "//div[@id='insent-popup-content']")
     private WebElement chatBotIcon;
 
@@ -29,11 +32,14 @@ public class ChatPage {
     @FindBy(xpath = "//div[@class='sc-kEYyzF faNzMh']")
     private WebElement invalidEmailErrorMsg;
 
-    @FindBy(xpath = "//div[text()='LinkedIn']")
+    @FindBy(xpath = "//div[@id='insent-input-message-input-box-body-input-validate']/form/*[2]")
+    private WebElement emailIdTickMark;
+
+    @FindBy(xpath = "//div[text()='LinkedIn' and @id='insent-buttons-message-button']")
     private WebElement linkedInBtn;
 
     @FindBy(xpath = "//div[@id='insent-conversation-list']/div[6]/div/div/div[2]/div/div")
-    private WebElement exitMessage;
+    private WebElement thankyouMessage;
 
     @FindBy(xpath = "//button[@class='sc-bEjcJn cRQNxc']")
     private WebElement resetConvoBtn;
@@ -45,6 +51,25 @@ public class ChatPage {
     private WebElement closedChatBotLaunchIcon;
 
 
+    public void acceptCookiesAndSwitchToIframe() {
+        try {
+            cookieAcceptButton.click();
+        } catch (Exception e) {
+            System.out.println("No 'Accept' button found for Cookies.");
+        }
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        driver.switchTo().frame("insent-iframe");
+    }
+
+    public String getChatBotIconText() {
+        return chatBotIcon.getText();
+    }
 
     public void clickChatBot() {
         chatBotIcon.click();
@@ -59,6 +84,10 @@ public class ChatPage {
         sendButton.click();
     }
 
+    public boolean isEmailIdAccepted(){
+        return emailIdTickMark.isDisplayed();
+    }
+
     public String getInvalidEmailErrorMessageText() {
         return invalidEmailErrorMsg.getText();
     }
@@ -71,12 +100,20 @@ public class ChatPage {
         sendButton.click();
     }
 
+    public WebElement getLinkedInBtnWebElement(){
+        return linkedInBtn;
+    }
+
     public void clickLinkedInButton() {
         linkedInBtn.click();
     }
 
-    public String getExitMessageText() {
-        return exitMessage.getText();
+    public WebElement getThankYouMessageWebElement(){
+        return thankyouMessage;
+    }
+
+    public String getThankYouMessageText() {
+        return thankyouMessage.getText();
     }
 
     public void clickResetConversationButton() {

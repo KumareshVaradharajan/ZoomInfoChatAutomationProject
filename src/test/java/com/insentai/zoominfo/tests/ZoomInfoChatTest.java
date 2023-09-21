@@ -26,6 +26,7 @@ public class ZoomInfoChatTest {
      * It initializes the WebDriver, configures Chrome options, maximizes the browser window,
      * sets implicit timeouts, navigates to the test website, accepts cookies, and switches to the chat bot iframe.
      */
+    @Step("Setup method")
     @BeforeMethod
     public void setUp() {
 

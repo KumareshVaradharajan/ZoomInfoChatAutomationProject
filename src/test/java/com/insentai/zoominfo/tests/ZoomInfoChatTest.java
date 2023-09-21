@@ -30,7 +30,8 @@ public class ZoomInfoChatTest {
         waitUtils = new WaitUtils(driver);
 
         driver.get("https://recruitment.web-test.insent.ai/fe-assignment");
-        chatPage.acceptCookiesAndSwitchToIframe();
+        chatPage.acceptCookies();
+        chatPage.SwitchToChatBotIframe();
 
     }
 
@@ -75,7 +76,7 @@ public class ZoomInfoChatTest {
     public void testValidEmailDataAndErrorMessage() {
         chatPage.clickChatBot();
         chatPage.enterEmailAndSend("xyz@abc.com");
-        Assert.assertTrue(chatPage.isEmailIdAccepted());
+        Assert.assertTrue(chatPage.isEmailIdAccepted(), "Valid Email Id is Not Accepted");
     }
 
     @Test(priority = 5)
@@ -90,6 +91,68 @@ public class ZoomInfoChatTest {
 
         waitUtils.waitForElementToBeVisible(chatPage.getThankYouMessageWebElement(), 10);
         Assert.assertEquals(chatPage.getThankYouMessageText(), "Thanks for your time!");
+    }
+
+    @Test(priority = 6)
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Restart the conversation")
+    public void testRestartConversation() {
+        chatPage.clickChatBot();
+        chatPage.clickResetConversationButton();
+
+        Assert.assertTrue(chatPage.isChatBotDisplayed(), "Chat bot is not displayed after restart.");
+    }
+
+    @Test(priority = 7)
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Close and open the chat")
+    public void testCloseAndOpenChat() {
+        chatPage.clickChatBot();
+        chatPage.closeChatBot();
+
+        // Verify that the chat is closed
+        Assert.assertFalse(chatPage.isChatBotDisplayed(), "Chat bot is still displayed after closing.");
+
+        chatPage.reopenClosedChatBot();
+
+        // Verify that the chat is reopened
+        Assert.assertTrue(chatPage.isChatBotDisplayed(), "Chat bot is not displayed after reopening.");
+    }
+
+    @Test(priority = 8)
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Open a new tab with google.com and return to chat page")
+    public void testOpenNewTabAndReturnToChat() {
+        chatPage.clickChatBot();
+        driver.switchTo().defaultContent();
+
+        // Open a new tab with google.com
+        ((JavascriptExecutor) driver).executeScript("window.open('', '_blank');");
+        driver.switchTo().window(driver.getWindowHandles().toArray()[1].toString());
+
+        driver.get("https://www.google.com");
+
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Switch back to the original tab (index 0)
+        driver.close();
+        driver.switchTo().window(driver.getWindowHandles().toArray()[0].toString());
+
+        chatPage.SwitchToChatBotIframe();
+        chatPage.enterEmailAndSend("abc@xyz.com");
+        Assert.assertTrue(chatPage.isEmailIdAccepted(), "Valid Email Id is Not Accepted, after returning from a new tab.");
+
+        waitUtils.waitForElementToBeVisible(chatPage.getLinkedInBtnWebElement(), 10);
+        chatPage.clickLinkedInButton();
+
+        waitUtils.waitForElementToBeVisible(chatPage.getThankYouMessageWebElement(), 10);
+        Assert.assertEquals(chatPage.getThankYouMessageText(), "Thanks for your time!");
+
+        chatPage.closeChatBot();
     }
 
 

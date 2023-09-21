@@ -50,22 +50,18 @@ public class ChatPage {
     @FindBy(xpath = "//div[@id='insent-launcher-icon']")
     private WebElement closedChatBotLaunchIcon;
 
-
-    public void acceptCookiesAndSwitchToIframe() {
+    public void acceptCookies() {
         try {
             cookieAcceptButton.click();
         } catch (Exception e) {
             System.out.println("No 'Accept' button found for Cookies.");
         }
+    }
 
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
+    public void SwitchToChatBotIframe() {
         driver.switchTo().frame("insent-iframe");
     }
+
 
     public String getChatBotIconText() {
         return chatBotIcon.getText();

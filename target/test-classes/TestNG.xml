@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="ZoomInfoChatTestSuite" verbose="1">
+    <listeners>
+        <listener class-name="org.testng.reporters.EmailableReporter" />
+        <listener class-name="org.testng.reporters.SuiteHTMLReporter" />
+
+    </listeners>
+    <test name="ZoomInfoChatTests">
+        <classes>
+            <class name="com.insentai.zoominfo.tests.ZoomInfoChatTest"/>
+        </classes>
+    </test>
+</suite>

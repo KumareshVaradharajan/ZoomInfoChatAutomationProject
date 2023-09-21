@@ -1,5 +1,6 @@
 package com.insentai.zoominfo.pages;
 
+import com.insentai.zoominfo.utils.WaitUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,10 +9,13 @@ import org.openqa.selenium.support.PageFactory;
 public class ChatPage {
 
     private WebDriver driver;
+    private WaitUtils waitUtils;
 
     public ChatPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+        waitUtils = new WaitUtils(driver);
+
     }
 
     @FindBy(id = "hs-eu-confirmation-button")
@@ -44,6 +48,9 @@ public class ChatPage {
     @FindBy(xpath = "//button[@class='sc-bEjcJn cRQNxc']")
     private WebElement resetConvoBtn;
 
+    @FindBy(xpath = "//div[@id='insent-conversation-list']/div[8]/div/div/div[2]/div/div")
+    private WebElement enterEmailIdTextLevel2;
+
     @FindBy(xpath = "//div[@data-testid='insent-test-card-close']")
     private WebElement chatBotCloseIcon;
 
@@ -52,6 +59,7 @@ public class ChatPage {
 
     public void acceptCookies() {
         try {
+            waitUtils.waitForElementToBeClickable(cookieAcceptButton, 10);
             cookieAcceptButton.click();
         } catch (Exception e) {
             System.out.println("No 'Accept' button found for Cookies.");
@@ -62,7 +70,6 @@ public class ChatPage {
         driver.switchTo().frame("insent-iframe");
     }
 
-
     public String getChatBotIconText() {
         return chatBotIcon.getText();
     }
@@ -71,8 +78,16 @@ public class ChatPage {
         chatBotIcon.click();
     }
 
+    public WebElement getWelcomeMessageElement() {
+        return welcomeMessage;
+    }
+
     public String getWelcomeMessage() {
         return welcomeMessage.getText();
+    }
+
+    public WebElement getEmailidTextBox() {
+        return emailTextBox;
     }
 
     public void enterEmailAndSend(String email) {
@@ -80,7 +95,7 @@ public class ChatPage {
         sendButton.click();
     }
 
-    public boolean isEmailIdAccepted(){
+    public boolean isEmailIdAccepted() {
         return emailIdTickMark.isDisplayed();
     }
 
@@ -92,11 +107,7 @@ public class ChatPage {
         return chatBotIcon.isDisplayed();
     }
 
-    public void clickSendButton() {
-        sendButton.click();
-    }
-
-    public WebElement getLinkedInBtnWebElement(){
+    public WebElement getLinkedInBtnWebElement() {
         return linkedInBtn;
     }
 
@@ -104,7 +115,7 @@ public class ChatPage {
         linkedInBtn.click();
     }
 
-    public WebElement getThankYouMessageWebElement(){
+    public WebElement getThankYouMessageWebElement() {
         return thankyouMessage;
     }
 
@@ -114,6 +125,14 @@ public class ChatPage {
 
     public void clickResetConversationButton() {
         resetConvoBtn.click();
+    }
+
+    public WebElement getEnterEmailIdTextElementLevel2() {
+        return enterEmailIdTextLevel2;
+    }
+
+    public String getEnterEmailIdTextLevel2() {
+        return enterEmailIdTextLevel2.getText();
     }
 
     public void closeChatBot() {

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="7" passed="7" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-09-21T20:26:46 IST" name="ZoomInfoChatTestSuite" finished-at="2023-09-21T20:29:15 IST" duration-ms="149279">
+    <groups>
+    </groups>
+    <test started-at="2023-09-21T20:26:46 IST" name="ZoomInfoChatTests" finished-at="2023-09-21T20:29:15 IST" duration-ms="149279">
+      <class name="com.insentai.zoominfo.tests.ZoomInfoChatTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.insentai.zoominfo.tests.ZoomInfoChatTest@2ed2d9cb]" started-at="2023-09-21T20:26:46 IST" name="setUp" finished-at="2023-09-21T20:26:59 IST" duration-ms="13218" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testBotVisibility()[pri:1, instance:com.insentai.zoominfo.tests.ZoomInfoChatTest@2ed2d9cb]" started-at="2023-09-21T20:26:59 IST" name="testBotVisibility" finished-at="2023-09-21T20:26:59 IST" duration-ms="50" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testBotVisibility -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.insentai.zoominfo.tests.ZoomInfoChatTest@2ed2d9cb]" started-at="2023-09-21T20:26:59 IST" name="tearDown" finished-at="2023-09-21T20:26:59 IST" duration-ms="110" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.insentai.zoominfo.tests.ZoomInfoChatTest@2ed2d9cb]" started-at="2023-09-21T20:26:59 IST" name="setUp" finished-at="2023-09-21T20:27:12 IST" duration-ms="12627" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testBotWelcomeMessage()[pri:2, instance:com.insentai.zoominfo.tests.ZoomInfoChatTest@2ed2d9cb]" started-at="2023-09-21T20:27:12 IST" name="testBotWelcomeMessage" finished-at="2023-09-21T20:27:14 IST" duration-ms="2307" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testBotWelcomeMessage -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.insentai.zoominfo.tests.ZoomInfoChatTest@2ed2d9cb]" started-at="2023-09-21T20:27:14 IST" name="tearDown" finished-at="2023-09-21T20:27:14 IST" duration-ms="106" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.insentai.zoominfo.tests.ZoomInfoChatTest@2ed2d9cb]" started-at="2023-09-21T20:27:14 IST" name="setUp" finished-at="2023-09-21T20:27:28 IST" duration-ms="13377" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testInvalidEmailDataAndErrorMessage()[pri:3, instance:com.insentai.zoominfo.tests.ZoomInfoChatTest@2ed2d9cb]" started-at="2023-09-21T20:27:28 IST" name="testInvalidEmailDataAndErrorMessage" finished-at="2023-09-21T20:27:31 IST" duration-ms="3234" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testInvalidEmailDataAndErrorMessage -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.insentai.zoominfo.tests.ZoomInfoChatTest@2ed2d9cb]" started-at="2023-09-21T20:27:31 IST" name="tearDown" finished-at="2023-09-21T20:27:31 IST" duration-ms="101" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.insentai.zoominfo.tests.ZoomInfoChatTest@2ed2d9cb]" started-at="2023-09-21T20:27:31 IST" name="setUp" finished-at="2023-09-21T20:27:43 IST" duration-ms="11724" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testValidEmailDataAndErrorMessage()[pri:4, instance:com.insentai.zoominfo.tests.ZoomInfoChatTest@2ed2d9cb]" started-at="2023-09-21T20:27:43 IST" name="testValidEmailDataAndErrorMessage" finished-at="2023-09-21T20:27:47 IST" duration-ms="4319" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testValidEmailDataAndErrorMessage -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.insentai.zoominfo.tests.ZoomInfoChatTest@2ed2d9cb]" started-at="2023-09-21T20:27:47 IST" name="tearDown" finished-at="2023-09-21T20:27:47 IST" duration-ms="95" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.insentai.zoominfo.tests.ZoomInfoChatTest@2ed2d9cb]" started-at="2023-09-21T20:27:47 IST" name="setUp" finished-at="2023-09-21T20:27:59 IST" duration-ms="11800" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testRestartConversation()[pri:5, instance:com.insentai.zoominfo.tests.ZoomInfoChatTest@2ed2d9cb]" started-at="2023-09-21T20:27:59 IST" name="testRestartConversation" finished-at="2023-09-21T20:28:09 IST" duration-ms="10258" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testRestartConversation -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.insentai.zoominfo.tests.ZoomInfoChatTest@2ed2d9cb]" started-at="2023-09-21T20:28:09 IST" name="tearDown" finished-at="2023-09-21T20:28:09 IST" duration-ms="113" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.insentai.zoominfo.tests.ZoomInfoChatTest@2ed2d9cb]" started-at="2023-09-21T20:28:09 IST" name="setUp" finished-at="2023-09-21T20:28:21 IST" duration-ms="11429" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testCloseAndOpenChat()[pri:6, instance:com.insentai.zoominfo.tests.ZoomInfoChatTest@2ed2d9cb]" started-at="2023-09-21T20:28:21 IST" name="testCloseAndOpenChat" finished-at="2023-09-21T20:28:36 IST" duration-ms="14635" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCloseAndOpenChat -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.insentai.zoominfo.tests.ZoomInfoChatTest@2ed2d9cb]" started-at="2023-09-21T20:28:36 IST" name="tearDown" finished-at="2023-09-21T20:28:36 IST" duration-ms="93" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.insentai.zoominfo.tests.ZoomInfoChatTest@2ed2d9cb]" started-at="2023-09-21T20:28:36 IST" name="setUp" finished-at="2023-09-21T20:28:47 IST" duration-ms="11491" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testOpenNewTabAndReturnToChat()[pri:7, instance:com.insentai.zoominfo.tests.ZoomInfoChatTest@2ed2d9cb]" started-at="2023-09-21T20:28:47 IST" name="testOpenNewTabAndReturnToChat" finished-at="2023-09-21T20:29:15 IST" duration-ms="27870" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testOpenNewTabAndReturnToChat -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.insentai.zoominfo.tests.ZoomInfoChatTest@2ed2d9cb]" started-at="2023-09-21T20:29:15 IST" name="tearDown" finished-at="2023-09-21T20:29:15 IST" duration-ms="109" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.insentai.zoominfo.tests.ZoomInfoChatTest -->
+    </test> <!-- ZoomInfoChatTests -->
+  </suite> <!-- ZoomInfoChatTestSuite -->
+</testng-results>

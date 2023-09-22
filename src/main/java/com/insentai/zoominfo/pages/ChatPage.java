@@ -11,12 +11,22 @@ public class ChatPage {
     private WebDriver driver;
     private WaitUtils waitUtils;
 
+    /**
+     * Constructor for initializing the ChatPage object.
+     *
+     * @param driver The WebDriver instance used for browser interaction.
+     */
     public ChatPage(WebDriver driver) {
+        // Initialize the WebDriver instance and associate it with this ChatPage object.
         this.driver = driver;
-        PageFactory.initElements(driver, this);
-        waitUtils = new WaitUtils(driver);
 
+        // Initialize web elements using PageFactory.
+        PageFactory.initElements(driver, this);
+
+        // Initialize the WaitUtils object to handle waiting for elements.
+        waitUtils = new WaitUtils(driver);
     }
+
 
     @FindBy(id = "hs-eu-confirmation-button")
     private WebElement cookieAcceptButton;

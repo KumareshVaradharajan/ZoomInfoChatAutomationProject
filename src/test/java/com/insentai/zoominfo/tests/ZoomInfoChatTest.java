@@ -21,6 +21,18 @@ public class ZoomInfoChatTest {
     private WaitUtils waitUtils;
     Properties properties;
 
+    @BeforeTest
+    public void loadProperties() {
+        // Load the configuration file only once for the entire test suite
+        properties = new Properties();
+        try {
+            FileInputStream configFile = new FileInputStream("src/test/resources/config.properties");
+            properties.load(configFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * This method is used to set up the test environment before executing the tests.
      * It initializes the WebDriver, configures Chrome options, maximizes the browser window,
@@ -30,28 +42,8 @@ public class ZoomInfoChatTest {
     @BeforeMethod
     public void setUp() {
 
-        // Load the configuration file
-        properties = new Properties();
-        try {
-            FileInputStream configFile = new FileInputStream("src/test/resources/config.properties");
-            properties.load(configFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        // Set the path to the Chrome WebDriver executable
-
-        if(properties.getProperty("browser").equals("Chrome")) {
-            System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-
-            // Configure Chrome options
-            ChromeOptions chromeOptions = new ChromeOptions();
-            chromeOptions.addArguments("--incognito"); // Open a new incognito window
-
-            // Initialize the WebDriver with the configured Chrome options
-            driver = new ChromeDriver(chromeOptions);
-        }
+        // Initialize the WebDriver based on the specified browser from the config file
+        initializeWebDriver(properties.getProperty("browser"));
 
         // Maximize the browser window for better visibility
         driver.manage().window().maximize();
@@ -73,6 +65,20 @@ public class ZoomInfoChatTest {
         chatPage.SwitchToChatBotIframe();
     }
 
+    /**
+     * Initializes the WebDriver based on the specified browser.
+     *
+     * @param browser The name of the browser to use (e.g., "Chrome").
+     */
+    private void initializeWebDriver(String browser) {
+        if (browser.equalsIgnoreCase("Chrome")) {
+            System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.addArguments("--incognito");
+            driver = new ChromeDriver(chromeOptions);
+        }
+    }
+
 
     /**
      * This test case checks if the chat bot icon is visible on the web page.
@@ -85,7 +91,6 @@ public class ZoomInfoChatTest {
 
         Assert.assertTrue(chatPage.isChatBotDisplayed(), "Chat bot is not displayed.");
     }
-
 
 
     /**
@@ -108,23 +113,19 @@ public class ZoomInfoChatTest {
 
     /**
      * Test case to enter invalid email data and verify the error message.
-     * - Clicks the chat bot to open it.
-     * - Enters an invalid email address ("abc") and sends it.
-     * - Verifies that the error message matches the expected "Please enter a valid email address."
-     * - Enters another invalid email address ("abc@gmail.com") and sends it.
-     * - Verifies that the error message matches the expected "Please use a business email address."
      */
     @Test(priority = 3, retryAnalyzer = RetryAnalyzer.class)
     @Severity(SeverityLevel.NORMAL)
     @Description("Enter invalid data and verify error message")
     public void testInvalidEmailDataAndErrorMessage() {
+        // Step 1: Clicks the chat bot to open it.
         chatPage.clickChatBot();
 
-        // Enters an invalid email address and verifies the error message
+        // Step 2: Enters an invalid email address and verifies the error message
         chatPage.enterEmailAndSend(properties.getProperty("invalidEmail1"));
         Assert.assertEquals(chatPage.getInvalidEmailErrorMessageText(), "Please enter a valid email address.");
 
-        // Enters another invalid email address and verifies the error message
+        // Step 3: Enters another invalid email address and verifies the error message
         chatPage.enterEmailAndSend(properties.getProperty("invalidEmail2"));
         Assert.assertEquals(chatPage.getInvalidEmailErrorMessageText(), "Please use a business email address.");
     }
@@ -132,18 +133,19 @@ public class ZoomInfoChatTest {
 
     /**
      * Test to enter valid Email data and verify the tick mark.
-     *
-     * Steps:
-     * 1. Click on the chat bot icon.
-     * 2. Enter a valid email address (e.g., xyz@abc.com) in the email text box.
-     * 3. Verify if the tick mark indicating the acceptance of the email is displayed.
      */
     @Test(priority = 4, retryAnalyzer = RetryAnalyzer.class)
     @Severity(SeverityLevel.CRITICAL)
     @Description("Enter valid Email data and verify the tick mark")
     public void testValidEmailDataAndErrorMessage() {
+
+        // Step 1: Click on the chat bot icon.
         chatPage.clickChatBot();
+
+        // Step 2: Enter a valid email address (e.g., xyz@abc.com) in the email text box.
         chatPage.enterEmailAndSend(properties.getProperty("validEmail"));
+
+        // Step 3: Verify if the tick mark indicating the acceptance of the email is displayed.
         Assert.assertTrue(chatPage.isEmailIdAccepted(), "Valid Email Id is Not Accepted");
     }
 

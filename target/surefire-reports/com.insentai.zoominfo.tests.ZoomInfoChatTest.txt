@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.insentai.zoominfo.tests.ZoomInfoChatTest
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 157.683 s - in com.insentai.zoominfo.tests.ZoomInfoChatTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 154.924 s - in com.insentai.zoominfo.tests.ZoomInfoChatTest
